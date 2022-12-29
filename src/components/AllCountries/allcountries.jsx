@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { apiURL } from "../utilities/api";
-import Loading from "../utilities/Loads/load";
 import SearchInput from "../search/search";
 
 const AllCountries = () => {
