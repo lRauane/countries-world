@@ -18,7 +18,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<AllCountries />} />
-          <Route path="/country" element={<CountriesInfo />} />
+          <Route path="/country/:countryName" element={<CountriesInfo />} />
         </Routes>
       </div>
     </>
