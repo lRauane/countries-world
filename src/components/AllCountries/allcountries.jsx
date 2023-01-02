@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { apiURL } from "../utilities/api";
 import SearchInput from "../search/search";
+import FilterCountry from "../FilterCountry/filterCountry";
+import { Link } from "react-router-dom";
 
 const AllCountries = () => {
   const [countries, setCountries] = useState([]);
@@ -18,9 +20,9 @@ const AllCountries = () => {
       setCountries(data);
 
       setIsLoading(false);
-    } catch (error) {
+    } catch (e) {
       setIsLoading(false);
-      setError(error.message);
+      setError(e.message);
     }
   };
 
@@ -32,10 +34,26 @@ const AllCountries = () => {
       const data = await res.json();
       setCountries(data);
 
-      setIsLoading(false)
+      setIsLoading(false);
     } catch (e) {
-      setIsLoading(false)
-      setError(error.message)
+      setIsLoading(false);
+      setError(e.message);
+    }
+  };
+
+  const getCountryByRegion = async (regionName) => {
+    try {
+      const res = await fetch(`${apiURL}/region/${regionName}`);
+
+      if (!res.ok) throw new Error("Falhou...");
+
+      const data = await res.json();
+
+      setIsLoading(false);
+      setCountries(data);
+    } catch (e) {
+      setIsLoading(false);
+      setError(false);
     }
   };
 
@@ -49,23 +67,28 @@ const AllCountries = () => {
         <div className="search">
           <SearchInput onSearch={getCountryByName} />
         </div>
+        <div className="filter">
+          <FilterCountry onSelect={getCountryByRegion} />
+        </div>
       </div>
       <div className="country__bottom">
         {isLoading && !error && <h4>Carregando...</h4>}
         {error && !isLoading && <h4>{error}</h4>}
 
         {countries?.map((country) => (
-          <div className="Country__card">
-            <div className="Country__img">
-              <img src={country.flags.png} alt="" />
+          <Link to={`/country/${country.name.common}`}>
+            <div className="Country__card">
+              <div className="Country__img">
+                <img src={country.flags.png} alt="" />
+              </div>
+              <div className="country__data">
+                <h3>{country.name.common}</h3>
+                <h6>População: {country.population}</h6>
+                <h6>Região: {country.region}</h6>
+                <h6>capital: {country.capital}</h6>
+              </div>
             </div>
-            <div className="country__data">
-              <h3>{country.name.common}</h3>
-              <h6>População: {country.population}</h6>
-              <h6>Região: {country.region}</h6>
-              <h6>capital: {country.capital}</h6>
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
