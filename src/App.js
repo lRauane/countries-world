@@ -2,13 +2,14 @@ import "./app.css";
 import { Routes, Route } from "react-router-dom";
 import AllCountries from "./components/AllCountries/allcountries";
 import CountriesInfo from "./components/CountriesInfo/CountriesInfo";
+import {GiWorld} from "react-icons/gi";
 
 function App() {
   return (
     <>
       <div className="header">
         <div className="container">
-          <h5>Where in the world</h5>
+          <h5>Países pelo mundo <GiWorld /></h5>
         </div>
       </div>
       <div className="container">

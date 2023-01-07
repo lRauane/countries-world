@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiURL } from "../utilities/api";
 import { Link } from "react-router-dom";
+import {BiArrowBack} from "react-icons/bi"
 
 const CountriesInfo = () => {
   const [country, setCountry] = useState([]);
@@ -31,10 +32,11 @@ const CountriesInfo = () => {
   }, [countryName]);
 
   return (
+    <>
+    <button>
+        <Link to="/"><BiArrowBack /></Link>
+    </button>
     <div className="country__info__wrapper">
-      <button>
-        <Link to="/">Back</Link>
-      </button>
 
       {isLoading && !error && <h4>Loading........</h4>}
       {error && !isLoading && { error }}
@@ -50,17 +52,15 @@ const CountriesInfo = () => {
 
             <div className="country__info-left">
               <h5>
-                Population:{" "}
+                População:{" "}
                 <span>
-                  {new Intl.NumberFormat().format(country.population)}
+                  {country.population}
                 </span>
               </h5>
               <h5>
-                Region: <span>{country.region}</span>
+                Região: <span>{country.region}</span>
               </h5>
-              <h5>
-                Sub Region: <span>{country.subregion}</span>
-              </h5>
+              
               <h5>
                 Capital: <span>{country.capital}</span>
               </h5>
@@ -69,6 +69,8 @@ const CountriesInfo = () => {
         </div>
       ))}
     </div>
+
+    </>
   );
 };
 

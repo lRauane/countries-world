@@ -8,7 +8,23 @@
 }
 a{
   text-decoration: none;
+  color: #fff;
 }
+button{
+  cursor: pointer;
+  border: 0;
+  margin-top: 120px;
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  outline: none;
+  background: hsl(240, 1%, 32%);
+}
+button:hover{
+  opacity: 0.7;
+  border: 1px solid #fff;
+}
+
 body {
   background-color: rgb(44, 44, 44);
 }
@@ -28,7 +44,7 @@ body {
   background-color: #333;
 }
 
-.header h4 {
+.header h5 {
   color: #fff;
   font-size: 1.5rem;
   display: flex;
@@ -102,6 +118,41 @@ select option {
   cursor: pointer;
 }
 
-.country__Info__wrraper{
+.country__info__wrapper{
   background-color: #333;
+  padding: 50px;
+  margin-top:50px;
+}
+
+.country__info__container{
+  display: flex;
+  justify-content: center;
+}
+
+.country__info-img, .country__info{
+  width: 40%;
+}
+.country__info-img img{
+  border-radius: 10px;
+}
+.country__info h3{
+  color: #fff;
+  font-size: 2.5rem;
+}
+.country__info-left{
+  padding: 20px;
+  width: 75%;
+  border-radius: 10px;
+  background-color: rgba(80, 80, 80, 0.692);
+}
+.country__info-left h5{
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+}
+.country__info-left span{
+  font-size: .9rem;
+  color: rgb(218, 218, 218);
+}
+h4{
+  color: #fff;
 }
