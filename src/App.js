@@ -1,4 +1,4 @@
-import "./app.css";
+import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import AllCountries from "./components/AllCountries/allcountries";
 import CountriesInfo from "./components/CountriesInfo/CountriesInfo";
